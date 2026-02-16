@@ -4,37 +4,107 @@
     <title>Venison Products - Excellent Venison</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f1ece2;
+            color: #3b2a1a;
+        }
+
+        header {
+            background: 
+                linear-gradient(rgba(75,46,30,0.85), rgba(75,46,30,0.85)),
+                url('Excellent Venison Images/ElandBackground.png') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            font-size: 48px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .product {
+            margin-bottom: 40px;
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        a.back-btn {
+            text-decoration: none;
+            color: #a47148;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            border: 2px solid #a47148;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        a.back-btn:hover {
+            background-color: #a47148;
+            color: white;
+        }
+    </style>
 </head>
-<body style="font-family: Arial; background:#f4f1e8; text-align:center; padding:40px;">
+<body>
 
-<h1>Venison Products</h1>
+<header>
+    <h1>Venison Products</h1>
+</header>
 
-<div style="max-width:900px; margin:auto;">
+<div class="container">
+    <h2>Our Venison Range</h2>
 
-    <h3>Eland Biltong & Droëwors</h3>
-    <img src="https://via.placeholder.com/400x250"><br><br>
+    <div class="product">
+        <img src="Excellent Venison Images/Eland Biltong.png" alt="Eland Biltong & Droëwors">
+        <p><strong>Eland Biltong & Droëwors</strong></p>
+    </div>
 
-    <h3>Eland Wors & Mince</h3>
-    <img src="https://via.placeholder.com/400x250"><br><br>
+    <div class="product">
+        <img src="Excellent Venison Images/BlueWildeBeestDrywors.png" alt="Blue Wildebeest Drywors">
+        <p><strong>Blue Wildebeest Drywors</strong></p>
+    </div>
 
-    <h3>Blesbuck Biltong & Droëwors</h3>
-    <img src="https://via.placeholder.com/400x250"><br><br>
+    <div class="product">
+        <img src="Excellent Venison Images/WharthogCabanossi.png" alt="Wharthog Cabanossi">
+        <p><strong>Wharthog Cabanossi</strong></p>
+    </div>
 
-    <h3>Blue Wildebeest Biltong & Droëwors</h3>
-    <img src="https://via.placeholder.com/400x250"><br><br>
+    <div class="product">
+        <img src="https://via.placeholder.com/400x250" alt="Smoked Cheese Grillers">
+        <p><strong>Smoked Cheese Grillers (Thick/Thin/Chilli)</strong></p>
+    </div>
 
-    <h3>Impala Biltong & Droëwors</h3>
-    <img src="https://via.placeholder.com/400x250"><br><br>
-
-    <h3>Warthog Cabanossi</h3>
-    <img src="https://via.placeholder.com/400x250"><br><br>
-
-    <h3>Smoked Cheese Grillers (Thick / Thin / Chilli)</h3>
-    <img src="https://via.placeholder.com/400x250"><br><br>
-
+    <a href="index.html" class="back-btn">← Back to Home</a>
 </div>
-
-<a href="index.html">← Back to Home</a>
 
 </body>
 </html>
