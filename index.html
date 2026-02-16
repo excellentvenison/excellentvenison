@@ -9,39 +9,62 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f4f1e8;
-            text-align: center;
+            color: #3b2a1a;
         }
 
         header {
             background-color: #4b2e1e;
             color: white;
-            padding: 40px 20px;
+            padding: 80px 20px;
+            text-align: center;
         }
 
-        h1 {
+        header h1 {
             margin: 0;
-            font-size: 40px;
+            font-size: 48px;
         }
 
-        p {
-            font-size: 18px;
+        header p {
+            font-size: 20px;
+            margin-top: 10px;
         }
 
         .btn {
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
+            margin-top: 25px;
+            padding: 14px 28px;
             background-color: #8b5e3c;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .products {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .products p {
+            margin: 10px 0;
+            font-size: 18px;
         }
 
         footer {
-            margin-top: 60px;
-            padding: 20px;
             background-color: #4b2e1e;
             color: white;
+            text-align: center;
+            padding: 30px;
         }
     </style>
 </head>
@@ -49,9 +72,38 @@
 
 <header>
     <h1>Excellent Venison</h1>
-    <p>Premium South African Venison & Biltong</p>
-    <a href="#" class="btn">Coming Soon</a>
+    <p>Premium Biltong, Drywors & Game Meat Products</p>
+    <a href="#contact" class="btn">Contact Us to Order</a>
 </header>
+
+<section>
+    <h2>Our Products</h2>
+    <div class="products">
+        <p>🥩 Beef & Venison Biltong</p>
+        <p>🌭 Droëwors / Drywors</p>
+        <p>🦌 Game Wors & Game Sosaties</p>
+        <p>🧀 Smoked Cheese Grillers</p>
+        <p>🥩 Bulk Meat & Venison Products</p>
+    </div>
+</section>
+
+<section>
+    <h2>Who We Supply</h2>
+    <div class="products">
+        <p>🏪 Tuckshops</p>
+        <p>🏢 Office Canteens</p>
+        <p>🛒 Supermarkets</p>
+        <p>🥩 Butcheries</p>
+        <p>📦 Direct Orders from the Public</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>To place an order or enquire about wholesale supply, contact us:</p>
+    <p><strong>Phone:</strong> 0XX XXX XXXX</p>
+    <p><strong>Email:</strong> info@excellentvenison.co.za</p>
+</section>
 
 <footer>
     © 2026 Excellent Venison | South Africa
