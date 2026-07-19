@@ -9,8 +9,16 @@ WhatsApp with the full order already typed.
 1. **Your WhatsApp number** — top of the file, `whatsappNumber`.
    Country code + number, digits only, no leading 0.
    `076 017 5956` becomes `"27760175956"`.
+   (Currently set to Derik's cell, `27832279481`, as a placeholder.)
 2. **Prices** — each product has a `price` line (Rand). Change the number.
-3. **Add a product** — copy one product block, paste it, change the details.
+3. **Mark something sold out** — change that product's `soldOut: false` to
+   `soldOut: true`. It shows a "Sold Out" badge and can't be added to the cart.
+   Change it back to `false` when it's in stock again.
+4. **Ingredients** — each product has an `ingredients` and `allergens` line;
+   these show on the back of the card when you hover/tap the photo.
+5. **Minimum order** — `minimumOrderItems` (top of file) is the number of items
+   a customer must add before they can check out. Currently 10.
+6. **Add a product** — copy one product block, paste it, change the details.
 
 ### How the category tabs work
 Each product has a `category` ("Beef", "Venison", "Pork", …) and a `meat`

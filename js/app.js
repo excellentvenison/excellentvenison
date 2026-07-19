@@ -9,6 +9,7 @@
 (function () {
   const cart = new Cart();
   const cur = CONFIG.currency;
+  const MIN = CONFIG.minimumOrderItems || 1;
   let activeCategory = "All";
 
   const el = {
@@ -26,14 +27,12 @@
 
   /* ---- Helpers: derive categories & groups from the data --------------- */
 
-  // Unique categories, in the order they first appear in PRODUCTS.
   function categories() {
     const seen = [];
     PRODUCTS.forEach((p) => { if (!seen.includes(p.category)) seen.push(p.category); });
     return ["All", ...seen];
   }
 
-  // Products for the active category, grouped by animal (meat), order preserved.
   function groupedProducts() {
     const list = PRODUCTS.filter(
       (p) => activeCategory === "All" || p.category === activeCategory
@@ -60,11 +59,29 @@
 
   /* ---- Rendering: product groups + cards ------------------------------ */
 
+  // The photo flips over (hover on desktop, tap on mobile) to show ingredients.
   function productCard(p) {
+    const sold = !!p.soldOut;
+    const addBtn = sold
+      ? `<button class="btn btn--add" disabled>Sold Out</button>`
+      : `<button class="btn btn--add" data-add="${p.id}">Add to cart</button>`;
+
     return `
-      <article class="product">
-        <div class="product__media">
-          <img src="${p.image}" alt="${p.name}" loading="lazy">
+      <article class="product ${sold ? "is-soldout" : ""}">
+        <div class="product__media flip" data-flip="${p.id}" role="button" tabindex="0"
+             aria-label="Show ingredients for ${p.name}">
+          <div class="flip__inner">
+            <div class="flip__front">
+              <img src="${p.image}" alt="${p.name}" loading="lazy">
+              ${sold ? `<span class="product__badge">Sold Out</span>` : ""}
+              <span class="flip__hint">Ingredients ⟳</span>
+            </div>
+            <div class="flip__back">
+              <h5 class="flip__title">What's in it</h5>
+              <p class="flip__ingredients">${p.ingredients || ""}</p>
+              ${p.allergens ? `<p class="flip__allergens">${p.allergens}</p>` : ""}
+            </div>
+          </div>
         </div>
         <div class="product__body">
           <p class="product__type">${p.type} · ${p.weight}</p>
@@ -72,7 +89,7 @@
           <p class="product__desc">${p.description}</p>
           <div class="product__foot">
             <span class="product__price">${cur}${p.price}</span>
-            <button class="btn btn--add" data-add="${p.id}">Add to cart</button>
+            ${addBtn}
           </div>
         </div>
       </article>`;
@@ -93,6 +110,28 @@
   }
 
   /* ---- Rendering: cart drawer ----------------------------------------- */
+
+  function checkoutBlock() {
+    const count = cart.getCount();
+
+    if (count < MIN) {
+      const need = MIN - count;
+      return `
+        <button class="btn btn--whatsapp is-disabled" disabled>Order on WhatsApp</button>
+        <p class="cart__minnote">
+          Minimum order is ${MIN} items — add ${need} more ${need === 1 ? "item" : "items"} to check out.
+        </p>`;
+    }
+
+    return `
+      <a class="btn btn--whatsapp" id="checkout" href="${WhatsApp.buildLink(cart)}"
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.004c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.35-.5.05-.97.24-3.27-.68-2.75-1.08-4.5-3.87-4.64-4.05-.14-.18-1.11-1.48-1.11-2.82s.7-2 .95-2.28c.24-.27.53-.34.71-.34.18 0 .36 0 .51.01.16.01.38-.06.6.46.24.55.8 1.9.87 2.04.07.14.12.31.02.49-.09.18-.14.29-.28.45-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.6-.14.24.09 1.55.73 1.81.87.27.14.45.2.51.31.07.11.07.64-.17 1.32Z"/>
+        </svg>
+        Order on WhatsApp
+      </a>`;
+  }
 
   function renderCart() {
     el.cartBadge.textContent = cart.getCount();
@@ -130,17 +169,22 @@
 
     el.cartFooter.innerHTML = `
       <div class="cart__totalrow">
-        <span>Total</span>
+        <span>Total (${cart.getCount()} items)</span>
         <span class="cart__total">${cur}${cart.getTotal()}</span>
       </div>
-      <a class="btn btn--whatsapp" id="checkout" href="${WhatsApp.buildLink(cart)}"
-         target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
-          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.004c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.94 1.35-.5.05-.97.24-3.27-.68-2.75-1.08-4.5-3.87-4.64-4.05-.14-.18-1.11-1.48-1.11-2.82s.7-2 .95-2.28c.24-.27.53-.34.71-.34.18 0 .36 0 .51.01.16.01.38-.06.6.46.24.55.8 1.9.87 2.04.07.14.12.31.02.49-.09.18-.14.29-.28.45-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.6-.14.24.09 1.55.73 1.81.87.27.14.45.2.51.31.07.11.07.64-.17 1.32Z"/>
-        </svg>
-        Order on WhatsApp
-      </a>
+      ${checkoutBlock()}
       <button class="cart__clear" id="clear-cart">Clear cart</button>`;
+  }
+
+  // Shown after the customer taps "Order on WhatsApp". We can't detect whether
+  // they actually sent the message, so we ask before clearing the cart.
+  function renderOrderConfirm() {
+    el.cartFooter.innerHTML = `
+      <div class="cart__confirm">
+        <p class="cart__confirm-q">Did your order open in WhatsApp?</p>
+        <button class="btn btn--whatsapp" id="confirm-sent">Yes — clear my cart</button>
+        <button class="cart__clear" id="confirm-keep">Not yet — keep my cart</button>
+      </div>`;
   }
 
   /* ---- Cart open / close ---------------------------------------------- */
@@ -179,14 +223,27 @@
     renderProducts();
   });
 
-  // Add to cart.
+  // Grid: flip a photo (tap) or add to cart.
   el.grid.addEventListener("click", (e) => {
-    const id = e.target.getAttribute("data-add");
-    if (!id) return;
-    cart.add(id, 1);
-    renderCart();
-    const product = PRODUCTS.find((p) => p.id === id);
-    showToast(`${product.name} added to cart`);
+    const addBtn = e.target.closest("[data-add]");
+    if (addBtn) {
+      const id = addBtn.getAttribute("data-add");
+      const product = PRODUCTS.find((p) => p.id === id);
+      if (!product || product.soldOut) return;
+      cart.add(id, 1);
+      renderCart();
+      showToast(`${product.name} added to cart`);
+      return;
+    }
+    const media = e.target.closest("[data-flip]");
+    if (media) media.classList.toggle("is-flipped");
+  });
+
+  // Keyboard: flip the focused photo with Enter / Space.
+  el.grid.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const media = e.target.closest("[data-flip]");
+    if (media) { e.preventDefault(); media.classList.toggle("is-flipped"); }
   });
 
   // Quantity / remove inside cart.
@@ -200,9 +257,23 @@
     if (inc || dec || rem) renderCart();
   });
 
-  // Clear cart.
+  // Cart footer: clear, checkout (then ask), and the confirm buttons.
   el.cartFooter.addEventListener("click", (e) => {
-    if (e.target.id === "clear-cart") { cart.clear(); renderCart(); }
+    if (e.target.closest("#clear-cart")) { cart.clear(); renderCart(); return; }
+
+    if (e.target.closest("#checkout")) {
+      // Let the link open WhatsApp in a new tab, then ask about the cart.
+      setTimeout(renderOrderConfirm, 400);
+      return;
+    }
+
+    if (e.target.closest("#confirm-sent")) {
+      cart.clear();
+      renderCart();
+      showToast("Order sent — cart cleared");
+      return;
+    }
+    if (e.target.closest("#confirm-keep")) { renderCart(); return; }
   });
 
   el.cartButton.addEventListener("click", openCart);
