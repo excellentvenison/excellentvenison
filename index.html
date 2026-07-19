@@ -28,7 +28,10 @@
     <h1>Excellent Venison</h1>
     <p>Premium Biltong, Droëwors &amp; Game Meat Products</p>
     <p class="hero__delivery" id="hero-delivery" hidden></p>
-    <a href="#shop" class="btn">Shop Now</a>
+    <div class="hero__cta">
+      <a href="#shop" class="btn" data-shop-range="dried">Shop Dried Meat</a>
+      <a href="#shop" class="btn btn--outline" data-shop-range="fresh">Shop Fresh &amp; Frozen</a>
+    </div>
   </header>
 
   <main>
@@ -36,9 +39,12 @@
     <section class="section" id="shop">
       <div class="container">
         <h2>Our Products</h2>
-        <p class="section__lead">Traditionally cured, air-dried the old way. Add to cart, then order straight from WhatsApp.</p>
+        <p class="section__lead">Choose a range, add to cart, then order straight from WhatsApp.</p>
 
-        <!-- Filter tabs build themselves from your product categories -->
+        <!-- Range switcher: Dried Meat vs Fresh & Frozen (built from CONFIG.ranges) -->
+        <div class="rangeswitch" id="range-switch"></div>
+
+        <!-- Category tabs build themselves from the products in the active range -->
         <div class="filters" id="filters"></div>
 
         <!-- Product groups injected here -->

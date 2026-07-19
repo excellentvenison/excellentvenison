@@ -278,6 +278,55 @@ h1, h2, h3, h4 { font-family: var(--display); margin: 0; }
 }
 .toast.is-visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
+/* ---- Hero CTA buttons ------------------------------------------------- */
+.hero__cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn--outline { background: transparent; border: 2px solid #fff; }
+.btn--outline:hover { background: rgba(255,255,255,.15); }
+
+/* ---- Range switcher --------------------------------------------------- */
+.rangeswitch {
+  display: flex; gap: 6px; max-width: 520px; margin: 0 auto 22px;
+  background: #e3d7c4; border-radius: 999px; padding: 5px;
+}
+.rangeswitch__btn {
+  flex: 1; border: none; cursor: pointer; border-radius: 999px;
+  padding: 11px 14px; font-family: var(--body); font-weight: 600; font-size: 14px;
+  background: transparent; color: var(--brown-deep); transition: background .2s, color .2s;
+}
+.rangeswitch__btn.is-active { background: var(--brown); color: #fff; }
+
+/* ---- Species accordion ------------------------------------------------ */
+.accordion { border: 1px solid #ddceb8; border-radius: var(--radius); margin-bottom: 14px; overflow: hidden; background: #fff; }
+.accordion__head {
+  width: 100%; display: flex; align-items: center; gap: 12px; cursor: pointer;
+  background: transparent; border: none; padding: 16px 18px;
+  font-family: var(--display); font-size: 19px; font-weight: 600; color: var(--brown-deep); text-align: left;
+}
+.accordion__head:hover { background: #faf6ee; }
+.accordion__count {
+  margin-left: auto; font-family: var(--body); font-size: 12px; font-weight: 600;
+  color: var(--muted); background: #f1ece2; border-radius: 999px; padding: 2px 9px;
+}
+.accordion__chev { transition: transform .3s; color: var(--leather); font-size: 14px; }
+.accordion__head.is-open .accordion__chev { transform: rotate(180deg); }
+.accordion__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
+.accordion__panel.is-open { grid-template-rows: 1fr; }
+.accordion__inner { overflow: hidden; }
+.accordion__inner .product-grid { padding: 4px 16px 18px; }
+
+/* ---- Product min-qty note + empty state ------------------------------- */
+.product__min { margin: 8px 0 0; font-size: 12px; font-weight: 600; color: var(--leather-dark); }
+.shop__empty { text-align: center; color: var(--muted); padding: 30px 0; }
+
+/* ---- Cart sections / subtotals ---------------------------------------- */
+.cart__section {
+  font-family: var(--body); text-transform: uppercase; letter-spacing: 1px;
+  font-size: 11px; font-weight: 700; color: var(--leather);
+  margin: 14px 0 2px; padding-top: 10px; border-top: 1px solid #eee5d7;
+}
+.cart-body > .cart__section:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+.cart__subrow { display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+
 /* ---- Larger screens --------------------------------------------------- */
 @media (min-width: 600px) {
   .hero { padding: 130px 20px; }

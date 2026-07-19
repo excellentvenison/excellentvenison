@@ -17,17 +17,32 @@ WhatsApp with the full order already typed.
 4. **Back-of-card blurb** — each product has an `about` line: the tempting
    description shown when the photo flips (hover/tap). Keep it appealing, not
    technical — ingredient & allergen detail belongs on the packaging.
-5. **Minimum order** — `minimumOrderItems` (top of file) is the number of items
-   a customer must add before they can check out. Currently 10.
+5. **Minimums** (top of file):
+   - `driedMinPerProduct` (5) — least packs of each dried product.
+   - `driedMinTotalPacks` (20) — least packs in a whole dried order.
+   - `freshMinValue` (450) — least rand value for a whole Fresh/Frozen order.
 6. **Add a product** — copy one product block, paste it, change the details.
 
-### How the category tabs work
-Each product has a `category` ("Beef", "Venison", "Pork", …) and a `meat`
-("Beef", "Kudu", "Springbok", …). The filter tabs on the site are built
-automatically from the categories in your product list — so the day you add a
-product with `category: "Pork"`, a **Pork** tab appears by itself. Products are
-grouped under a heading per `meat`, so "Venison" holds both Kudu and Springbok.
-There is a ready-made (commented-out) Pork example at the bottom of the file.
+### Ranges, categories and species
+Every product has a `range` (`"dried"` or `"fresh"`), a `category`
+("Beef", "Venison", "Pork"), and a `meat` (the species: "Beef", "Kudu",
+"Springbok", "Warthog"…). It all builds itself:
+
+- The two buttons **Dried Meat** / **Venison & Meat Products** come from
+  `CONFIG.ranges` and show only that range's products.
+- Inside a range, a tab appears per `category`.
+- If a category has more than one species, each species becomes an
+  **expandable accordion** (e.g. Venison → Kudu, Springbok, Warthog). A single
+  species just shows its products directly.
+
+So to add, say, Eland biltong you only add one product block with
+`range:"dried", category:"Venison", meat:"Eland"` — an **Eland** accordion
+appears on its own. Same for fresh. `unit` is `"pack"` for dried or `"kg"` for
+fresh and shows in the order (e.g. "2kg Kudu Mince").
+
+The whole **Venison & Meat Products** (fresh/frozen) range is currently
+placeholder products, all sold out, using `placeholder.jpg`. Edit their names,
+prices, units and photos, then set `soldOut: false` when ready.
 
 ## File layout
 
