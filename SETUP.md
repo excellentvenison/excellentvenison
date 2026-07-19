@@ -14,8 +14,9 @@ WhatsApp with the full order already typed.
 3. **Mark something sold out** — change that product's `soldOut: false` to
    `soldOut: true`. It shows a "Sold Out" badge and can't be added to the cart.
    Change it back to `false` when it's in stock again.
-4. **Ingredients** — each product has an `ingredients` and `allergens` line;
-   these show on the back of the card when you hover/tap the photo.
+4. **Back-of-card blurb** — each product has an `about` line: the tempting
+   description shown when the photo flips (hover/tap). Keep it appealing, not
+   technical — ingredient & allergen detail belongs on the packaging.
 5. **Minimum order** — `minimumOrderItems` (top of file) is the number of items
    a customer must add before they can check out. Currently 10.
 6. **Add a product** — copy one product block, paste it, change the details.

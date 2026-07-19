@@ -77,9 +77,8 @@
               <span class="flip__hint">Ingredients ⟳</span>
             </div>
             <div class="flip__back">
-              <h5 class="flip__title">What's in it</h5>
-              <p class="flip__ingredients">${p.ingredients || ""}</p>
-              ${p.allergens ? `<p class="flip__allergens">${p.allergens}</p>` : ""}
+              <h5 class="flip__title">Why you'll love it</h5>
+              <p class="flip__text">${p.about || p.description || ""}</p>
             </div>
           </div>
         </div>
@@ -172,6 +171,7 @@
         <span>Total (${cart.getCount()} items)</span>
         <span class="cart__total">${cur}${cart.getTotal()}</span>
       </div>
+      ${CONFIG.deliveryNote ? `<p class="cart__delivery">🚚 ${CONFIG.deliveryNote}</p>` : ""}
       ${checkoutBlock()}
       <button class="cart__clear" id="clear-cart">Clear cart</button>`;
   }
@@ -282,6 +282,12 @@
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(); });
 
   /* ---- Go ------------------------------------------------------------- */
+
+  const heroDelivery = document.getElementById("hero-delivery");
+  if (heroDelivery && CONFIG.deliveryNote) {
+    heroDelivery.textContent = CONFIG.deliveryNote;
+    heroDelivery.hidden = false;
+  }
 
   renderFilters();
   renderProducts();

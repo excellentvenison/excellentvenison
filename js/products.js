@@ -19,25 +19,29 @@ const CONFIG = {
   /* Customers must order at least this many items in total before they can
      check out on WhatsApp. Change the number to adjust the minimum.          */
   minimumOrderItems: 10,
+
+  /* Short delivery line shown on the site. Leave as "" to hide it.           */
+  deliveryNote: "Free delivery in Centurion & Pretoria",
 };
 
 /* -----------------------------------------------------------------------------
    YOUR PRODUCTS
    -----------------------------------------------------------------------------
    Each product has:
-     category    -> the top-level tab it appears under: "Beef", "Venison"...
+     category    -> the top-level tab it appears under: "Beef", "Venison", "Pork"
                     (the filter tabs on the site build themselves from these)
      meat        -> the specific animal, used as the sub-heading: "Beef", "Kudu"
-     type        -> "Biltong", "Droëwors", "Sweet Chili Bites"...
+     type        -> "Biltong", "Droëwors", "Cabanossi"...
      price       -> Rand per packet  (EDIT these to your real prices)
      weight      -> e.g. "60g" or "80g"
-     image       -> a file inside images/products/
+     image       -> a file inside images/products/  (use the placeholder until
+                    you have a real photo)
      description -> the short line shown on the FRONT of the card
-     ingredients -> shown on the BACK of the card (flips over on hover / tap)
-     allergens   -> small print under the ingredients
+     about       -> the tempting blurb shown on the BACK of the card (the photo
+                    flips over on hover / tap). Keep it appealing, not technical —
+                    ingredient / allergen detail lives on the packaging.
      soldOut     -> true or false. Set to true to show "(Sold Out)" and stop
-                    people adding it to the cart. Set back to false when it's
-                    in stock again. THIS IS HOW YOU MANAGE STOCK.
+                    people adding it to the cart. THIS IS HOW YOU MANAGE STOCK.
 
    TO ADD A PRODUCT:   copy one block, paste it, change the details.
    TO CHANGE A PRICE:  edit the "price" number.
@@ -56,8 +60,7 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/beef-biltong.jpg",
     description: "Classic and familiar. Seasoned with salt and coriander, traditionally cured. A crowd-pleaser.",
-    ingredients: "Beef, brown vinegar, salt, coriander, black pepper, sugar, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
+    about: "The one everyone reaches for. Deep, savoury and moreish — proper beef biltong that always disappears first.",
     soldOut: false,
   },
   {
@@ -70,8 +73,7 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/beef-droewors.jpg",
     description: "Premium beef, lightly seasoned with coriander and slowly dried to perfection. Made for every journey.",
-    ingredients: "Beef, brown vinegar, salt, coriander, black pepper, sugar, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
+    about: "Soft, rich and full of flavour. A road-trip and braai-day favourite that never lasts long in the bag.",
     soldOut: false,
   },
   {
@@ -84,8 +86,7 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/beef-sweet-chili-bites.jpg",
     description: "Tender beef with a sweet chilli glaze, balancing gentle heat with subtle sweetness.",
-    ingredients: "Beef, brown vinegar, salt, coriander, black pepper, sugar, sweet chilli, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
+    about: "A little sweet, a little heat. Tender bites with a sticky sweet-chilli finish that keep you coming back.",
     soldOut: false,
   },
 
@@ -100,9 +101,8 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/kudu-biltong.jpg",
     description: "Lean kudu meat with a delicate game flavour, traditionally cured for exceptional taste.",
-    ingredients: "Lean kudu, brown vinegar, salt, coriander, black pepper, sugar, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
-    soldOut: false,
+    about: "Lean, tender and full of that distinctive kudu game flavour. A refined snack for true venison lovers.",
+    soldOut: true,
   },
   {
     id: "kudu-droewors",
@@ -114,9 +114,8 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/kudu-droewors.jpg",
     description: "Lean kudu meat, delicately seasoned and slowly dried for an authentic game experience.",
-    ingredients: "Lean kudu, brown vinegar, salt, coriander, black pepper, sugar, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
-    soldOut: false,
+    about: "Delicate game flavour in a soft, slow-dried wors. Rich, lean and unmistakably kudu.",
+    soldOut: true,
   },
   {
     id: "kudu-sweet-chili-bites",
@@ -128,9 +127,8 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/kudu-sweet-chili-bites.jpg",
     description: "Lean kudu meat paired with sweet chilli for a rich game flavour and gentle heat.",
-    ingredients: "Lean kudu, brown vinegar, salt, coriander, black pepper, sugar, sweet chilli, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
-    soldOut: false,
+    about: "Lean kudu with a gentle sweet-chilli kick. Game flavour and a touch of heat in every bite.",
+    soldOut: true,
   },
 
   /* --------------------------- VENISON (Springbok) --------------------------- */
@@ -144,9 +142,8 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/springbok-biltong.jpg",
     description: "Lean springbok with a refined game flavour, expertly seasoned and naturally air-dried.",
-    ingredients: "Lean springbok, brown vinegar, salt, coriander, black pepper, sugar, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
-    soldOut: false,
+    about: "Prized springbok, air-dried the old way. Elegant, lean and deeply flavourful — a true taste of the veld.",
+    soldOut: true,
   },
   {
     id: "springbok-droewors",
@@ -158,9 +155,8 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/springbok-droewors.jpg",
     description: "Coarsely ground springbok, expertly seasoned and naturally air-dried. High in flavour, rich in character.",
-    ingredients: "Lean springbok, brown vinegar, salt, coriander, black pepper, sugar, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
-    soldOut: false,
+    about: "Coarse, rich and full of character. Springbok wors with a bold game flavour that stands on its own.",
+    soldOut: true,
   },
   {
     id: "springbok-sweet-chili-bites",
@@ -172,25 +168,51 @@ const PRODUCTS = [
     price: 35,                          //  <-- EDIT ME
     image: "images/products/springbok-sweet-chili-bites.jpg",
     description: "Premium springbok with a sweet chilli finish that complements its delicate game flavour.",
-    ingredients: "Lean springbok, brown vinegar, salt, coriander, black pepper, sugar, sweet chilli, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
-    soldOut: false,
+    about: "Delicate springbok meets sweet chilli. Refined game flavour with a moreish sweet-and-spicy edge.",
+    soldOut: true,
   },
 
-  /* --------- Example for later — remove the surrounding comment to enable ------
+  /* ---------------------------- PORK ----------------------------
+     New range — placeholder names, prices and photos. Edit the names to match
+     exactly what you make, set real prices, replace the placeholder image with
+     a real photo, then flip soldOut to false when they're ready to sell.      */
   {
-    id: "pork-biltong",
+    id: "pork-cabanossi",
     category: "Pork",
     meat: "Pork",
-    type: "Biltong",
-    name: "Pork Biltong",
-    weight: "60g",
-    price: 35,
-    image: "images/products/pork-biltong.jpg",
-    description: "Your description here.",
-    ingredients: "Pork, brown vinegar, salt, coriander, black pepper, sugar, Crown National Safari Biltong seasoning. Preservative: sodium nitrite (E250).",
-    allergens: "May contain traces of soy and mustard. Contains sulphites.",
-    soldOut: false,
+    type: "Cabanossi",
+    name: "Cabanossi",
+    weight: "100g",
+    price: 35,                          //  <-- EDIT ME (placeholder)
+    image: "images/products/placeholder.jpg",
+    description: "Smoked, dried pork sausage — savoury and snackable.",
+    about: "Smoky, savoury and hard to put down. A classic dried sausage that's made for sharing (or not).",
+    soldOut: true,
   },
-  ---------------------------------------------------------------------------- */
+  {
+    id: "pork-cherry-cabanossi",
+    category: "Pork",
+    meat: "Pork",
+    type: "Cabanossi",
+    name: "Cherry Cabanossi",
+    weight: "100g",
+    price: 35,                          //  <-- EDIT ME (placeholder)
+    image: "images/products/placeholder.jpg",
+    description: "Our cabanossi with a subtle sweet, cherry-tinged twist.",
+    about: "Smoky cabanossi with a hint of sweetness. Moreish, a little different, and easy to love.",
+    soldOut: true,
+  },
+  {
+    id: "pork-salami-sticks",
+    category: "Pork",
+    meat: "Pork",
+    type: "Salami",
+    name: "Salami Sticks",
+    weight: "100g",
+    price: 35,                          //  <-- EDIT ME (placeholder)
+    image: "images/products/placeholder.jpg",
+    description: "Bold, well-spiced salami in a grab-and-go stick.",
+    about: "Big flavour, easy snacking. Well-spiced salami sticks you can drop in a lunchbox or a pocket.",
+    soldOut: true,
+  },
 ];
