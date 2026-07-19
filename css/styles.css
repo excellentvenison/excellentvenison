@@ -16,8 +16,11 @@
   --muted:        #7a6a58;
   --radius:       10px;
   --shadow:       0 6px 18px rgba(59, 42, 26, 0.10);
-  --display: 'Playfair Display', serif;
-  --body:    'Open Sans', sans-serif;
+  /* Type: Poppins is the clean sans (stand-in for the label's Jannah), and
+     Antic Didone is the elegant serif accent used on the packaging. */
+  --display: 'Poppins', sans-serif;
+  --body:    'Poppins', sans-serif;
+  --accent:  'Antic Didone', Georgia, serif;
   --header-h: 64px;
 }
 
@@ -41,8 +44,8 @@ h1, h2, h3, h4 { font-family: var(--display); margin: 0; }
   background: var(--brown); color: #fff;
 }
 .topbar__brand {
-  font-family: var(--display); font-size: 20px; font-weight: 700;
-  letter-spacing: .5px; color: #fff; text-decoration: none;
+  font-family: var(--display); font-size: 19px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 2px; color: #fff; text-decoration: none;
 }
 .cart-button {
   position: relative; display: inline-flex; align-items: center; gap: 8px;
@@ -70,8 +73,14 @@ h1, h2, h3, h4 { font-family: var(--display); margin: 0; }
   background-size: cover;
   color: #fff; text-align: center; padding: 90px 20px;
 }
-.hero h1 { font-size: 40px; letter-spacing: 1px; margin-bottom: 12px; }
-.hero p { font-size: 18px; margin: 0 0 28px; opacity: .95; }
+.hero h1 {
+  font-size: 40px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; margin-bottom: 12px;
+}
+.hero p {
+  font-family: var(--accent); font-size: 22px; letter-spacing: .3px;
+  margin: 0 0 28px; opacity: .95;
+}
 
 /* ---- Buttons ---------------------------------------------------------- */
 .btn {
@@ -93,6 +102,7 @@ h1, h2, h3, h4 { font-family: var(--display); margin: 0; }
 .container { max-width: 1100px; margin: 0 auto; }
 .section h2 { font-size: 32px; text-align: center; margin-bottom: 10px; }
 .section__lead {
+  font-family: var(--accent); font-size: 19px;
   text-align: center; color: var(--muted);
   max-width: 620px; margin: 0 auto 32px;
 }
