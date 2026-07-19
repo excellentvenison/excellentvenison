@@ -61,9 +61,12 @@ h1, h2, h3, h4 { font-family: var(--display); margin: 0; }
 
 /* ---- Hero ------------------------------------------------------------- */
 .hero {
-  background:
+  background-color: var(--brown); /* fallback so the hero is never broken */
+  background-image:
     linear-gradient(rgba(75,46,30,0.82), rgba(75,46,30,0.82)),
-    url('Excellent Venison Images/WharthogBackground.png') no-repeat center center;
+    url('../images/hero-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
   color: #fff; text-align: center; padding: 90px 20px;
 }

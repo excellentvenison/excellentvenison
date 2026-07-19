@@ -10,7 +10,7 @@ const CONFIG = {
   /* Your business WhatsApp number, with country code, digits only.
      South Africa is 27, then the number WITHOUT the leading 0.
      Example:  076 017 5956   ->   "27760175956"                                */
-  whatsappNumber: "27XXXXXXXXX",        //  <-- EDIT ME
+  whatsappNumber: "27832279481",        //  <-- EDIT ME
 
   currency: "R",
   businessName: "Excellent Venison",
@@ -42,7 +42,7 @@ const PRODUCTS = [
     type: "Biltong",
     name: "Beef Biltong",
     weight: "60g",
-    price: 45,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/beef-biltong.jpg",
     description: "Classic and familiar. Seasoned with salt and coriander, traditionally cured. A crowd-pleaser.",
   },
@@ -53,7 +53,7 @@ const PRODUCTS = [
     type: "Droëwors",
     name: "Beef Droëwors",
     weight: "60g",
-    price: 45,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/beef-droewors.jpg",
     description: "Premium beef, lightly seasoned with coriander and slowly dried to perfection. Made for every journey.",
   },
@@ -64,7 +64,7 @@ const PRODUCTS = [
     type: "Sweet Chili Bites",
     name: "Beef Sweet Chili Bites",
     weight: "60g",
-    price: 45,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/beef-sweet-chili-bites.jpg",
     description: "Tender beef with a sweet chilli glaze, balancing gentle heat with subtle sweetness.",
   },
@@ -77,7 +77,7 @@ const PRODUCTS = [
     type: "Biltong",
     name: "Kudu Biltong",
     weight: "60g",
-    price: 55,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/kudu-biltong.jpg",
     description: "Lean kudu meat with a delicate game flavour, traditionally cured for exceptional taste.",
   },
@@ -88,7 +88,7 @@ const PRODUCTS = [
     type: "Droëwors",
     name: "Kudu Droëwors",
     weight: "60g",
-    price: 55,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/kudu-droewors.jpg",
     description: "Lean kudu meat, delicately seasoned and slowly dried for an authentic game experience.",
   },
@@ -99,7 +99,7 @@ const PRODUCTS = [
     type: "Sweet Chili Bites",
     name: "Kudu Sweet Chili Bites",
     weight: "60g",
-    price: 55,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/kudu-sweet-chili-bites.jpg",
     description: "Lean kudu meat paired with sweet chilli for a rich game flavour and gentle heat.",
   },
@@ -112,7 +112,7 @@ const PRODUCTS = [
     type: "Biltong",
     name: "Springbok Biltong",
     weight: "60g",
-    price: 55,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/springbok-biltong.jpg",
     description: "Lean springbok with a refined game flavour, expertly seasoned and naturally air-dried.",
   },
@@ -123,7 +123,7 @@ const PRODUCTS = [
     type: "Droëwors",
     name: "Springbok Droëwors",
     weight: "60g",
-    price: 55,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/springbok-droewors.jpg",
     description: "Coarsely ground springbok, expertly seasoned and naturally air-dried. High in flavour, rich in character.",
   },
@@ -134,7 +134,7 @@ const PRODUCTS = [
     type: "Sweet Chili Bites",
     name: "Springbok Sweet Chili Bites",
     weight: "60g",
-    price: 55,                          //  <-- EDIT ME
+    price: 35,                          //  <-- EDIT ME
     image: "images/products/springbok-sweet-chili-bites.jpg",
     description: "Premium springbok with a sweet chilli finish that complements its delicate game flavour.",
   },
