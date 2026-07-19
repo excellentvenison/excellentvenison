@@ -1,181 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Excellent Venison</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excellent Venison — Premium Biltong, Droëwors & Game Meat</title>
+  <meta name="description" content="Premium South African biltong, droëwors and sweet chili bites — beef and game. Order directly on WhatsApp.">
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap');
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f1ece2;
-    color: #3b2a1a;
-}
-
-/* HERO SECTION */
-header {
-    background: 
-        linear-gradient(rgba(75,46,30,0.85), rgba(75,46,30,0.85)),
-        url('Excellent Venison Images/WharthogBackground.png') no-repeat center center;
-    background-size: cover;
-    color: white;
-    padding: 120px 20px;
-    text-align: center;
-}
-
-header h1 {
-    font-family: 'Playfair Display', serif;
-    margin: 0;
-    font-size: 54px;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 22px;
-    margin-top: 15px;
-}
-
-.btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 15px 32px;
-    background-color: #a47148;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background-color: #8b5e3c;
-}
-
-/* SECTIONS */
-section {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    margin-bottom: 25px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
-}
-
-.product {
-    background: white;
-    padding: 18px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: 0.3s;
-}
-
-.product:hover {
-    transform: translateY(-5px);
-}
-
-.product img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* CONTACT */
-.contact p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-/* FOOTER */
-footer {
-    background-color: #4b2e1e;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 14px;
-}
-
-</style>
-
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<header>
+  <!-- Sticky top bar with cart -->
+  <div class="topbar">
+    <a href="#" class="topbar__brand">Excellent Venison</a>
+    <button class="cart-button" id="cart-button" aria-label="Open cart">
+      Cart
+      <span class="cart-button__badge" id="cart-badge" hidden>0</span>
+    </button>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
     <h1>Excellent Venison</h1>
-    <p>Premium Biltong, Droëwors & Game Meat Products</p>
-    <a href="#contact" class="btn">Contact Us to Order</a>
-</header>
+    <p>Premium Biltong, Droëwors &amp; Game Meat Products</p>
+    <a href="#shop" class="btn">Shop Now</a>
+  </header>
 
-<section>
-    <div class="container">
-        <h2>Our Product Range</h2>
+  <main>
+    <!-- Shop -->
+    <section class="section" id="shop">
+      <div class="container">
+        <h2>Our Products</h2>
+        <p class="section__lead">Traditionally cured, air-dried the old way. Add to cart, then order straight from WhatsApp.</p>
 
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:40px;">
+        <!-- Filter tabs build themselves from your product categories -->
+        <div class="filters" id="filters"></div>
 
-            <a href="beef.html" class="btn">View Beef Products</a>
-            <a href="venison.html" class="btn">View Venison Products</a>
+        <!-- Product groups injected here -->
+        <div id="product-grid"></div>
+      </div>
+    </section>
 
-        </div>
-
-    </div>
-</section>
-
-
-<section>
-    <div class="container">
+    <!-- Natural ingredients -->
+    <section class="section section--tint">
+      <div class="container">
         <h2>Natural Ingredients</h2>
-        <p>
-            Our biltong is made using traditional South African methods with simple,
-            natural ingredients. No artificial preservatives.
+        <p class="section__lead">
+          Our biltong is made using traditional South African methods with simple,
+          natural ingredients — no artificial preservatives.
         </p>
-        <p>
-            <strong>Ingredients:</strong> 
-            Premium quality meat, vinegar, salt, coriander, black pepper,
-            natural spices.
-        </p>
-        <p>
-            Air-dried slowly to preserve flavour and tenderness.
-        </p>
-    </div>
-</section>
+        <p class="contact"><strong>Ingredients:</strong> Premium quality meat, vinegar, salt, coriander, black pepper, natural spices.</p>
+        <p class="contact">Air-dried slowly to preserve flavour and tenderness.</p>
+      </div>
+    </section>
 
-<section>
-    <div class="container">
+    <!-- Who we supply -->
+    <section class="section">
+      <div class="container">
         <h2>Who We Supply</h2>
-        <p>Tuckshops | Office Canteens | Supermarkets | Butcheries | Direct Public Orders</p>
-    </div>
-</section>
+        <p class="section__lead">Tuckshops · Office Canteens · Supermarkets · Butcheries · Direct Public Orders</p>
+      </div>
+    </section>
 
-<section id="contact">
-    <div class="container contact">
+    <!-- Contact -->
+    <section class="section section--tint" id="contact">
+      <div class="container contact">
         <h2>Contact Us</h2>
         <p><strong>Derik:</strong> 083 227 9481</p>
         <p><strong>Izak:</strong> 076 017 5956</p>
         <p><strong>Email:</strong> excellentvenison@gmail.com</p>
         <p><strong>Processing Address:</strong> 23 Largo Rd, Strubenvale, Springs, 1559</p>
-    </div>
-</section>
+      </div>
+    </section>
+  </main>
 
-<footer>
+  <footer class="footer">
     © 2026 Excellent Venison | South Africa
-</footer>
+  </footer>
 
+  <!-- Cart drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Shopping cart">
+    <div class="cart-drawer__head">
+      <h2>Your Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-body"></div>
+    <div class="cart-footer" id="cart-footer"></div>
+  </aside>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts: data first, then logic. -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/whatsapp.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
