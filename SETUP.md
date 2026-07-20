@@ -28,8 +28,9 @@ Every product has a `range` (`"dried"` or `"fresh"`), a `category`
 ("Beef", "Venison", "Pork"), and a `meat` (the species: "Beef", "Kudu",
 "Springbok", "Warthog"…). It all builds itself:
 
-- The two buttons **Dried Meat** / **Venison & Meat Products** come from
-  `CONFIG.ranges` and show only that range's products.
+- The two buttons **Dried & Cured** / **Fresh & Frozen Cuts** come from
+  `CONFIG.ranges` and show only that range's products. (Rename them in
+  `CONFIG.ranges`.)
 - Inside a range, a tab appears per `category`.
 - If a category has more than one species, each species becomes an
   **expandable accordion** (e.g. Venison → Kudu, Springbok, Warthog). A single
@@ -40,9 +41,14 @@ So to add, say, Eland biltong you only add one product block with
 appears on its own. Same for fresh. `unit` is `"pack"` for dried or `"kg"` for
 fresh and shows in the order (e.g. "2kg Kudu Mince").
 
-The whole **Venison & Meat Products** (fresh/frozen) range is currently
-placeholder products, all sold out, using `placeholder.jpg`. Edit their names,
-prices, units and photos, then set `soldOut: false` when ready.
+Venison is now labelled **Game** (holds Kudu, Springbok, Warthog). Pork isn't a
+group — the cabanossi & salami sit under **Cured Sausages** with "pork" noted in
+their text. The whole **Fresh & Frozen Cuts** range is currently placeholder
+products, all sold out, using `placeholder.jpg`. Edit their names, prices, units
+and photos, then set `soldOut: false` when ready.
+
+Favicon/logo: the site uses `favicon.ico` / `favicon.png` (a simple brown "EV"
+placeholder). Replace these and add a real logo when you have the brand files.
 
 ## File layout
 
