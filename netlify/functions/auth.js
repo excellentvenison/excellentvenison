@@ -11,7 +11,7 @@ exports.handler = async (event) => {
   const params = new URLSearchParams({
     client_id: clientId,
     redirect_uri: redirectUri,
-    scope: "repo",
+    scope: "repo,user",
     allow_signup: "false",
   });
   return {
