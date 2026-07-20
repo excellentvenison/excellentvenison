@@ -1,0 +1,94 @@
+# =============================================================================
+# Sveltia CMS configuration for Excellent Venison
+# Editing UI at /admin — saves changes into this GitHub repo, Netlify redeploys.
+# NOTE: `base_url` below must point at the GitHub OAuth relay (set during the
+#       one-time login setup). Until then, login won't work.
+# =============================================================================
+
+backend:
+  name: github
+  repo: excellentvenison/excellentvenison   # owner/repo
+  branch: main
+  # base_url: https://YOUR-OAUTH-RELAY        # <-- set during login setup
+
+# Where uploaded product photos are stored / referenced from.
+media_folder: "images/products"
+public_folder: "images/products"
+
+collections:
+  # ---- Shop settings (single file) ----------------------------------------
+  - name: settings
+    label: "Shop settings"
+    delete: false
+    files:
+      - name: settings
+        label: "Settings"
+        file: "data/settings.json"
+        fields:
+          - { name: whatsappNumber, label: "WhatsApp number (digits only, e.g. 27832279481)", widget: string }
+          - { name: businessName, label: "Business name", widget: string }
+          - { name: currency, label: "Currency symbol", widget: string, default: "R" }
+          - { name: orderClosingLine, label: "Order closing line (end of WhatsApp message)", widget: string }
+          - { name: deliveryNote, label: "Delivery note (shown on site)", widget: string, required: false }
+          - { name: deliveryPolicy, label: "Delivery policy (added to WhatsApp order)", widget: text, required: false }
+          - name: ranges
+            label: "Range names"
+            widget: object
+            fields:
+              - name: dried
+                label: "Dried range"
+                widget: object
+                fields:
+                  - { name: label, label: "Name on site", widget: string }
+                  - { name: short, label: "Short name (WhatsApp)", widget: string }
+              - name: fresh
+                label: "Fresh range"
+                widget: object
+                fields:
+                  - { name: label, label: "Name on site", widget: string }
+                  - { name: short, label: "Short name (WhatsApp)", widget: string }
+          - { name: driedMinPerProduct, label: "Dried: minimum packs per product", widget: number, value_type: int, min: 1 }
+          - { name: driedMinTotalPacks, label: "Dried: minimum packs per order", widget: number, value_type: int, min: 1 }
+          - { name: freshMinValue, label: "Fresh: minimum order value (R)", widget: number, value_type: int, min: 0 }
+
+  # ---- Products (single file, one card per product) ------------------------
+  - name: products
+    label: "Products"
+    delete: false
+    files:
+      - name: products
+        label: "All products"
+        file: "data/products.json"
+        fields:
+          - name: products
+            label: "Products"
+            label_singular: "Product"
+            widget: list
+            summary: "{{fields.name}}  ·  {{fields.range}}{{#if fields.soldOut}}  ·  SOLD OUT{{/if}}"
+            fields:
+              - { name: name, label: "Name", widget: string }
+              - name: range
+                label: "Range"
+                widget: select
+                options:
+                  - { label: "Dried & Cured", value: "dried" }
+                  - { label: "Fresh & Frozen Cuts", value: "fresh" }
+              - name: category
+                label: "Category (tab)"
+                widget: select
+                options: ["Beef", "Game", "Cured Sausages", "Pork"]
+              - { name: meat, label: "Animal / species (e.g. Kudu, Springbok, Beef)", widget: string }
+              - { name: type, label: "Type (e.g. Biltong, Droëwors, Mince, Wors)", widget: string }
+              - { name: weight, label: "Weight / portion (e.g. 60g, 80g, 1kg)", widget: string }
+              - name: unit
+                label: "Sold by"
+                widget: select
+                options:
+                  - { label: "Pack", value: "pack" }
+                  - { label: "Kilogram", value: "kg" }
+                default: "pack"
+              - { name: price, label: "Price (R per pack/unit)", widget: number, value_type: int, min: 0 }
+              - { name: soldOut, label: "Sold out", widget: boolean, default: false }
+              - { name: image, label: "Photo", widget: image, required: false }
+              - { name: description, label: "Short description (front of card)", widget: text }
+              - { name: about, label: "Why you'll love it (back of card)", widget: text, required: false }

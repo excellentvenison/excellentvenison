@@ -1,0 +1,21 @@
+{
+  "whatsappNumber": "27832279481",
+  "currency": "R",
+  "businessName": "Excellent Venison",
+  "orderClosingLine": "Please confirm availability and delivery. Thank you!",
+  "deliveryNote": "Free delivery in Pretoria, Centurion & Gauteng",
+  "deliveryPolicy": "Free delivery in Pretoria, Centurion & Gauteng. Areas outside may incur additional delivery charges.",
+  "ranges": {
+    "dried": {
+      "label": "Dried & Cured",
+      "short": "DRIED & CURED"
+    },
+    "fresh": {
+      "label": "Fresh & Frozen Cuts",
+      "short": "FRESH & FROZEN CUTS"
+    }
+  },
+  "driedMinPerProduct": 5,
+  "driedMinTotalPacks": 20,
+  "freshMinValue": 450
+}

@@ -5,7 +5,7 @@
    Driven entirely by CONFIG + PRODUCTS in products.js — you shouldn't edit here.
    ============================================================================= */
 
-(function () {
+function initApp() {
   const cart = new Cart();
   const cur = CONFIG.currency;
   const rangeKeys = Object.keys(CONFIG.ranges);
@@ -372,4 +372,7 @@
   renderFilters();
   renderProducts();
   renderCart();
-})();
+}
+
+// Wait for the data files to load, then start the app.
+DATA_READY.then(initApp);

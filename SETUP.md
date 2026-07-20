@@ -4,7 +4,11 @@ Single-page shop with category tabs and a WhatsApp checkout. Customers filter
 by category, add items to a cart, tap **Order on WhatsApp**, and it opens
 WhatsApp with the full order already typed.
 
-## The only file you edit day-to-day: `js/products.js`
+> **New:** content is now managed in the **/admin** panel (see `ADMIN-SETUP.md`)
+> and stored in `data/settings.json` + `data/products.json`. You can still edit
+> those data files by hand as described below — the field names are identical.
+
+## Your content lives in `data/settings.json` and `data/products.json`
 
 1. **Your WhatsApp number** — top of the file, `whatsappNumber`.
    Country code + number, digits only, no leading 0.
