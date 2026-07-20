@@ -1,0 +1,5 @@
+# Netlify config. Static site (no build command); serverless functions power the
+# admin login (GitHub OAuth relay) in netlify/functions.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

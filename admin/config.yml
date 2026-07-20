@@ -9,7 +9,8 @@ backend:
   name: github
   repo: excellentvenison/excellentvenison   # owner/repo
   branch: main
-  # base_url: https://YOUR-OAUTH-RELAY        # <-- set during login setup
+  base_url: https://excellentvenison.co.za          # your site (hosts the auth functions)
+  auth_endpoint: .netlify/functions/auth            # the Netlify OAuth relay
 
 # Where uploaded product photos are stored / referenced from.
 media_folder: "images/products"
